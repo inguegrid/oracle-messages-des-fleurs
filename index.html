@@ -3,194 +3,185 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Oracle – Messages des Fleurs</title>
-
+<title>Oracle – Messages des Fleurs 🌿✨</title>
 <style>
-/* ================= BASE ================= */
-body {
-  margin: 0;
-  padding: 20px;
-  font-family: Georgia, serif;
-  background: #fdfaf6;
-  color: #2e2e2e;
-  overflow-x: hidden;
+  body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background: #fdfaf5;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  h1 {
+    color: #3b3b3b;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .cards-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap; /* Toujours côte à côte */
+    gap: 20px;
+    position: relative;
+  }
+
+ .card-display {
+  width: 300px;
+  cursor: pointer;
+  position: relative;
+  perspective: 1000px;
+  opacity: 1;                 /* VISIBLE AU DEPART */
+  transform: translateY(0) scale(1);
+  transition: all 0.6s ease;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 10px;
-}
 
-/* ================= INTRO ================= */
-.intro-wrapper {
-  width: 100%;
+  .card-display.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .card-inner {
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+
+  .card-display img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    display: block;
+    backface-visibility: hidden;
+  }
+
+
+  .card-text {
+    background: rgba(255,255,255,0.95);
+    padding: 12px;
+    border-radius: 10px;
+    margin-top: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: left;
+    min-height: 120px;
+  }
+
+  @keyframes fadeIn {
+    0% {opacity: 0; transform: translateY(-20px);}
+    100% {opacity: 1; transform: translateY(0);}
+  }
+
+  .fade-in {
+    animation: fadeIn 0.5s ease forwards;
+  }
+
+  /* Message pour forcer le mode paysage */
+  .landscape-warning {
+    display: none;
+    position: fixed;
+    top:0; left:0;
+    width: 100%; height: 100%;
+    background: #fdfaf5;
+    z-index: 1000;
+    text-align: center;
+    padding-top: 40%;
+    font-size: 1.2em;
+    color: #3b3b3b;
+  }
+
+  @media screen and (max-width: 900px) and (orientation: portrait) {
+  .cards-row {
   display: flex;
   justify-content: center;
-  margin-bottom: 30px;
-}
-
-.intro-text {
-  max-width: 600px;
-  text-align: center;
-  font-style: italic;
-  opacity: 0.8;
-}
-
-/* ================= MOBILE WARNING ================= */
-.landscape-warning {
-  display: none;
-  text-align: center;
-  font-style: italic;
-  opacity: 0.8;
-  margin-bottom: 20px;
-}
-
-/* ================= CARTES ================= */
-.cards-row {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  max-width: 900px;
+  gap: 20px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
-.card-display {
-  width: 220px;
-  cursor: pointer;
-  perspective: 1200px;
+
+
+  /* animation “vibration magique” au clic ou au survol */
+.card-display:hover, .card-display:active {
+  transform: scale(1.03) rotate(-1deg);
+  transition: transform 0.2s ease;
 }
 
-.card-inner {
-  transition: transform 1s ease, opacity 1s ease;
-  opacity: 0.6;
-}
 
-.card-display:hover .card-inner {
-  transform: translateY(-6px);
-  opacity: 1;
-}
-
-/* ================= IMAGE ================= */
-.card-inner img {
-  width: 100%;
-  border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-}
-
-/* ================= TEXTE ================= */
-.card-text, .card-keyword, .card-action {
-  text-align: center;
-  margin-top: 6px;
-  font-size: 0.85em;
-}
-
-.card-keyword {
-  font-weight: bold;
-  color: #5a3a3a;
-}
-
-.card-action {
-  font-style: italic;
-  opacity: 0.85;
-}
-
-/* ================= ANIMATION RÉVÉLATION ================= */
-.reveal {
-  animation: revealCard 1.2s ease forwards;
-}
-
-@keyframes revealCard {
-  0% {
-    opacity: 0;
-    transform: scale(0.9) translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-
-/* ================= FOOTER ================= */
-footer {
-  margin-top: 50px;
-  text-align: center;
-  font-size: 0.8em;
-  opacity: 0.6;
-}
-
-/* ================= RESPONSIVE ================= */
-@media screen and (max-width: 900px) and (orientation: portrait) {
-  .cards-row { display: none; }
-  .landscape-warning { display: block; }
-}
 </style>
 </head>
-
 <body>
 
 <div class="landscape-warning">
-🌸 Veuillez tourner votre téléphone à l’horizontal 🌸
+  🌸 Pour voir votre tirage complet, veuillez tourner votre téléphone à l'horizontal 🌸
 </div>
 
-<h1>Oracle – Messages des Fleurs 🌿</h1>
+<h1>🌸 Oracle – Messages des Fleurs 🌿</h1>
 
-<h2>Respire. Laisse venir l’image. Clique sur une carte. Un univers floral s’ouvrira.</h2>
- 
+<p style="
+  text-align: center;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  font-style: italic;
+  opacity: 0.8;
+">
+  Respire. Laisse venir l’image. Clique sur une carte. Un univers floral s’ouvrira.<br>
+
+</p>
+
 
 <div class="cards-row">
-  <div class="card-display" onclick="drawAllCards()">
-    <div class="card-inner" id="inner0">
-      <img id="cardImage0" src="images/placeholder.jpg">
-      <div class="card-text" id="cardText0">Tirer les cartes</div>
-      <div class="card-keyword" id="cardKeyword0"></div>
-      <div class="card-action" id="cardAction0"></div>
+  <div class="card-display" id="card0" onclick="drawAllCards()">
+    <div class="card-inner">
+      <img src="images/placeholder.jpg" id="cardImage0" alt="Carte 1">
+      <div class="card-text" id="cardText0">Cliquez pour tirer les 3 cartes</div>
     </div>
   </div>
-
-  <div class="card-display" onclick="drawAllCards()">
-    <div class="card-inner" id="inner1">
-      <img id="cardImage1" src="images/placeholder.jpg">
-      <div class="card-text" id="cardText1">Tirer les cartes</div>
-      <div class="card-keyword" id="cardKeyword1"></div>
-      <div class="card-action" id="cardAction1"></div>
+  <div class="card-display" id="card1" onclick="drawAllCards()">
+    <div class="card-inner">
+      <img src="images/placeholder.jpg" id="cardImage1" alt="Carte 2">
+      <div class="card-text" id="cardText1">Cliquez pour tirer les 3 cartes</div>
     </div>
   </div>
-
-  <div class="card-display" onclick="drawAllCards()">
-    <div class="card-inner" id="inner2">
-      <img id="cardImage2" src="images/placeholder.jpg">
-      <div class="card-text" id="cardText2">Tirer les cartes</div>
-      <div class="card-keyword" id="cardKeyword2"></div>
-      <div class="card-action" id="cardAction2"></div>
+  <div class="card-display" id="card2" onclick="drawAllCards()">
+    <div class="card-inner">
+      <img src="images/placeholder.jpg" id="cardImage2" alt="Carte 3">
+      <div class="card-text" id="cardText2">Cliquez pour tirer les 3 cartes</div>
     </div>
   </div>
 </div>
 
-
 <script>
-const cards = [
+ const cards = [
   {name:"Rose rouge 🌹", keyword:"Passion", message:"Le cœur s’embrase. Ose ressentir profondément et offrir ton amour sans retenue.", action:"Visualise une lumière rouge qui réchauffe ton cœur.", image:"images/rose_rouge.jpg"},
   {name:"Rose rose-orangé 🌸🧡", keyword:"Tendresse", message:"L’amour doux et joyeux se glisse dans chaque geste. Accueille la chaleur des liens sincères.", action:"Écris ou dis quelque chose de bienveillant à toi-même ou à un proche.", image:"images/rose_rose_orange.jpg"},
   {name:"Nigelle bleue 💙", keyword:"Clarté", message:"Le bleu ouvre le ciel intérieur. Laisse tes idées se poser, limpides et aériennes.", action:"Respire profondément en visualisant un ciel bleu clair.", image:"images/nigelle_bleue.jpg"},
   {name:"Nigelle blanche 🤍", keyword:"Pureté", message:"Un souffle de simplicité. Déleste-toi des pensées encombrantes et laisse la lumière entrer.", action:"Méditation courte avec lumière blanche purifiante.", image:"images/nigelle_blanche.jpg"},
-  {name:"Anémone du Japon rose 🌷", keyword:"Douceur", message:"La délicatesse guide tes pas. Même les gestes les plus petits portent un parfum de grâce.", action:"Observe une action simple de la vie quotidienne avec attention et gratitude.", image:"images/anemone_japon_rose.jpg"},
-  {name:"Anémone du Japon blanche ⚪", keyword:"Sérénité", message:"Le calme se dépose comme une neige légère. Écoute le silence et son langage subtil.", action:"Quelques minutes de silence et respiration consciente.", image:"images/anemone_japon_blanche.jpg"},
+  {name:"Anémone du Japon rose 🌷", keyword:"Douceur", message:"La délicatesse guide tes pas. Même les gestes les plus petits portent un parfum de grâce.", action:"Observe une action simple de la vie quotidienne avec attention et gratitude.", image:"images/anemone_rose.jpg"},
+  {name:"Anémone du Japon blanche ⚪", keyword:"Sérénité", message:"Le calme se dépose comme une neige légère. Écoute le silence et son langage subtil.", action:"Quelques minutes de silence et respiration consciente.", image:"images/anemone_blanche.jpg"},
   {name:"Valériane rose foncé 🌺", keyword:"Énergie douce", message:"Le feu intérieur n’est pas toujours flamboyant ; il chauffe doucement, avec constance.", action:"Bouge ou étire-toi en conscience, en sentant l’énergie circuler.", image:"images/valeriane_rose_fonce.jpg"},
   {name:"Coque de nigelle 🖤", keyword:"Protection", message:"Dans la coque, la graine est en sécurité. Crée ton refuge intérieur pour te ressourcer.", action:"Imagine-toi entouré d’une sphère protectrice.", image:"images/coque_nigelle.jpg"},
   {name:"Valériane blanche 🤍", keyword:"Apaisement", message:"La blancheur détend les tensions. Accorde-toi un moment de calme et de respiration.", action:"Écoute un son doux ou respire profondément.", image:"images/valeriane_blanche.jpg"},
   {name:"Feuilles de bananier vert 🍃", keyword:"Croissance", message:"Tout pousse à son rythme. Observe et respecte ton propre processus.", action:"Note une intention de croissance personnelle ou créative.", image:"images/feuilles_bananier_vert.jpg"},
   {name:"Feuilles de bananier fanées 🍂", keyword:"Lâcher-prise", message:"La beauté réside aussi dans ce qui se fane. Libère ce qui n’est plus nécessaire.", action:"Écris ou visualise ce que tu veux laisser derrière toi.", image:"images/feuilles_bananier_fanees.jpg"},
   {name:"Aster parme 💜", keyword:"Sagesse douce", message:"Le parfum léger des asters rappelle la patience et la persévérance dans la douceur.", action:"Note un conseil ou une leçon récente et médite dessus.", image:"images/aster_parme.jpg"},
-  {name:"Gauras blanches ⚪", keyword:"Légèreté", message:"Danse avec le vent, même si la vie semble fragile. La légèreté est un cadeau.", action:"Bouge librement ou respire avec légèreté.", image:"images/gauras_blanches.jpg"},
+  {name:"Gauras blanches ⚪", keyword:"Légèreté", message:"Danse avec le vent, même si la vie semble fragile. La légèreté est un cadeau.", action:"Bouge librement ou respire avec légèreté.", image:"images/gaura_blanche.jpg"},
   {name:"Gaillarde rouge et jaune 🔴🟡", keyword:"Joie explosive", message:"Le mélange de rouge et de jaune allume ton enthousiasme et ton courage.", action:"Danse, chante ou fais quelque chose qui te met en joie.", image:"images/gaillarde_rouge_jaune.jpg"},
   {name:"Monarde rose 🌸", keyword:"Vitalité", message:"La vie pétillante circule dans chaque pétale. Accueille ton énergie avec gratitude.", action:"Bois un verre d’eau en conscience, en sentant ton corps se revitaliser.", image:"images/monarde_rose.jpg"},
   {name:"Cosmos rose froid", keyword:"Détachement doux", message:"La beauté n’a pas besoin de s’accrocher. Ce qui est juste reste, ce qui doit partir s’éloigne sans bruit.", action:"Relâche une attente précise et observe le lâcher-prise.", image:"images/cosmos_rose_froid.jpg"},
   {name:"Hortensia crème", keyword:"Gratitude", message:"L’abondance discrète se cache dans la nuance. Remercie pour ce qui est déjà là.", action:"Cite trois petites choses pour lesquelles tu éprouves de la reconnaissance.", image:"images/hortensia_creme.jpg"},
-  {name:"Graines de clématite vert tendre", keyword:"Potentiel", message:"Tout n’est pas encore visible. La promesse existe déjà, silencieuse et intacte.", action:"Note une idée ou un désir sans chercher à le concrétiser.", image:"images/graines_clematite.jpg"},
+  {name:"Graines de clématite vert tendre", keyword:"Potentiel", message:"Tout n’est pas encore visible. La promesse existe déjà, silencieuse et intacte.", action:"Note une idée ou un désir sans chercher à le concrétiser.", image:"images/clematite_vert_tendre.jpg"},
   {name:"Cosmos rose fuchsia", keyword:"Affirmation", message:"La couleur ose. Ta présence aussi. Prends ta place sans diminuer ton éclat.", action:"Exprime une opinion ou un choix retenu jusqu’ici.", image:"images/cosmos_rose_fuchsia.jpg"},
   {name:"Aster mauve", keyword:"Intuition posée", message:"Le mauve relie ciel et terre. Écoute ton ressenti tout en restant ancré.", action:"Pose une question intérieure, puis attends la réponse.", image:"images/aster_mauve.jpg"},
   {name:"Lobélia bleu", keyword:"Communication fluide", message:"Les mots peuvent circuler comme l’eau claire. Dis vrai, sans dureté.", action:"Exprime un message important avec calme et sincérité.", image:"images/lobelia_bleu.jpg"},
-  {name:"Campanule blanche aux poussières bordeaux", keyword:"Singularité cachée", message:"Sous la pureté apparente, une trace unique signe ton passage.", action:"Honore une part de toi que tu montres rarement.", image:"images/campanule_bordeaux.jpg"},
+  {name:"Campanule blanche aux poussières bordeaux", keyword:"Singularité cachée", message:"Sous la pureté apparente, une trace unique signe ton passage.", action:"Honore une part de toi que tu montres rarement.", image:"images/campanule_blanche_bordeaux.jpg"},
   {name:"Rudbeckia rose", keyword:"Résilience joyeuse", message:"Même après l’épreuve, la couleur revient. La force peut être tendre.", action:"Souviens-toi d’une difficulté surmontée et reconnais ton courage.", image:"images/rudbeckia_rose.jpg"},
   {name:"Coquelourde fuchsia", keyword:"Intensité vivante", message:"La vie palpite fort. N’éteins pas ton feu pour rassurer.", action:"Fais un choix guidé par l’élan plutôt que par la peur.", image:"images/coquelourde_fuchsia.jpg"},
   {name:"Clématite crème", keyword:"Élévation tranquille", message:"S’élever sans brusquer. La lumière se rejoint par la patience.", action:"Prends de la hauteur sur une situation.", image:"images/clematite_creme.jpg"},
@@ -215,22 +206,48 @@ const cards = [
   {name:"Géranium violet", keyword:"Équilibre émotionnel", message:"L’énergie violette apaise et recentre. Trouve ton centre au milieu du tumulte.", action:"Respire profondément et visualise un halo violet stabilisant.", image:"images/geranium_violet.jpg"}
 ];
 
-function drawAllCards() {
-  for (let i = 0; i < 3; i++) {
-    const randomIndex = Math.floor(Math.random() * cards.length);
-    const card = cards[randomIndex];
-    
-    document.getElementById("cardImage"+i).src = card.image;
-    document.getElementById("cardText"+i).innerHTML = "<strong>" + card.name + "</strong><br>" + card.message;
-    document.getElementById("cardKeyword"+i).innerHTML = "<em>Mot-clé : " + card.keyword + "</em>";
-    document.getElementById("cardAction"+i).innerHTML = "Action : " + card.action;
+
+  function drawAllCards() {
+    if(cards.length < 3){
+      alert("Il faut au moins 3 cartes dans le deck pour ce tirage !");
+      return;
+    }
+
+    let deckCopy = [...cards];
+    deckCopy.sort(() => Math.random() - 0.5);
+
+    for (let slot = 0; slot < 3; slot++) {
+      const card = deckCopy[slot];
+      const image = document.getElementById(`cardImage${slot}`);
+      const text = document.getElementById(`cardText${slot}`);
+      const cardDiv = document.getElementById(`card${slot}`);
+
+      // Reset animation
+      image.classList.remove('fade-in');
+      text.classList.remove('fade-in');
+      cardDiv.classList.remove('show');
+      void image.offsetWidth;
+      void text.offsetWidth;
+
+      // Mise à jour du contenu
+      image.src = card.image;
+      image.alt = card.name;
+      text.innerHTML = `
+        <strong>${card.name}</strong><br>
+        <em>${card.keyword}</em><br><br>
+        ${card.message}<br><br>
+        <strong>Action :</strong> ${card.action}
+      `;
+
+      // Appliquer effet fade-in et “bouquet”
+      setTimeout(() => {
+        cardDiv.classList.add('show');
+        image.classList.add('fade-in');
+        text.classList.add('fade-in');
+      }, slot * 200); // décalage progressif pour effet bouquet
+    }
   }
-}
-<footer>
-© Oracle – Messages des Fleurs
-</footer>
 </script>
 
 </body>
 </html>
-
